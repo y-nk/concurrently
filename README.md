@@ -111,6 +111,7 @@ Check out documentation and other usage examples in the [`docs` directory](./doc
   - `prefix`: the prefix type to use when logging processes output.
     Possible values: `index`, `pid`, `time`, `command`, `name`, `none`, or a template (eg `[{time} process: {pid}]`).
     Default: the name of the process, or its index if no name is set.
+    Templates can wrap any portion of the prefix with `{color}` and `{/color}` to restrict coloring to that region (eg `[{color}{name}{/color}]` colors only the name, leaving the brackets uncolored). If either marker is omitted the missing side is implicit, so a template with no markers is colored in full.
   - `prefixColors`: a list of colors or a string as supported by [Chalk](https://www.npmjs.com/package/chalk) and additional style `auto` for an automatically picked color.
     Supports all Chalk color functions: `#RRGGBB`, `bg#RRGGBB`, `hex()`, `bgHex()`, `rgb()`, `bgRgb()`, `ansi256()`, `bgAnsi256()`.
     Functions and modifiers can be chained (e.g., `rgb(255,136,0).bold`, `black.bgHex(#00FF00).dim`).

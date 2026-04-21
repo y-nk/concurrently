@@ -236,7 +236,10 @@ export class Logger {
             const marker = inColorRegion ? COLOR_CLOSE : COLOR_OPEN;
             const idx = rest.indexOf(marker);
             if (idx === -1) {
-                output += inColorRegion ? color(rest) : rest;
+                // Tail after the last closing marker: normalization guarantees a
+                // `{/color}` exists, so once opened a region always finds its close —
+                // reaching here implies `inColorRegion` is false and the tail is plain.
+                output += rest;
                 break;
             }
             const segment = rest.slice(0, idx);
